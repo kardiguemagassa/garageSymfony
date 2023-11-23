@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des horaires{% endblock %}
+
+{% block content %}
+    
+    {# test data footer #}
+    <div class="box">
+
+        <h3>Horaires d'ouvertures</h3>
+        {% for schedule in schedules %}
+
+            {{schedule.openedDays}}
+            {{schedule.hoursPM}}
+            {{schedule.hoursAM}}
+
+        {% endfor %}
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{# <div class="box "> 
+
+    <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid">
+
+		<h3>Marque : {{car.brand.libelle}}</h3>
+		<p>Modèle : {{car.models.libelle}}</p>
+		<p>Année : {{car.year}}</p>
+		<p>Energie : {{car.energy}}</p>
+		<p>Kilomètre : {{car.kilometer}} km</p>
+		<p>Prix : {{(car.price)|number_format(2,',','.')}} €</p>
+
+    <a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+
+</div> #}
+
+
+<div class="swiper-slide box">
+    <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid no-gutters" >
+    <div class="content">
+        <h3> {{car.brand.libelle}} : {{car.models.libelle}}</h3>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+    	<div class="price">Prix : {{(car.price)|number_format(2,',','.')}} € </div>
+    	<a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+    </div>
+</div>

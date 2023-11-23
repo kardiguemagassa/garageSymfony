@@ -1,0 +1,46 @@
+<main>
+    {# Globals extension  #}
+    {% set testimonialsData = testimonialsData() %}
+
+    <section class="reviews" id="reviews">
+
+        {# Avis clients #}
+        <h1 class="heading"> Avis <span>clients</span> </h1>
+
+        <div class="swiper review-slider">
+                
+            <div class="swiper-wrapper">
+
+                {% for testimonial in testimonialsData['testimonials'] %}
+            
+                    <div class="swiper-slide box">
+
+                        <img src="/uploads/avis/{{testimonial.illustration }}" alt="{{testimonial.author }}">
+                        
+                        {# <img src="/uploads/avis/{{testimonial.illustration }}" alt="{{testimonial.title }}" class="img-fluid"> #}
+                    
+
+                        <div class="content">
+                            <p>{{testimonial.message}}</p>
+                            <h3>{{testimonial.author}}</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+
+                        </div>
+
+                    </div> 
+
+                {% endfor %}
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </section>
+<main>

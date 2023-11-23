@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{service.title}} {% endblock %}
+
+{% block content %}
+    
+    <main>
+        <section class="services" id="services">
+
+            <h1 class="heading"> Nos <span>services</span> </h1>
+            
+            <div class="row ">
+                <div class="box-container">
+                    <div class="box ">
+                        <img src="/uploads/services/{{service.illustration }}" alt="{{service.title }}" class="img-fluid">
+                    </div>
+                    
+                    <div class="col-md-12 my-auto">
+
+                        <h3>Référence : {{service.title}}</h3>
+                        <h3>Prix : {{(service.price)|number_format(2,',','.')}} €</h3>
+                        <hr>
+                        <h4>{{service.description}}</h4>
+                        <a href="{{path('add_to_cart', {'id' : service.id })}}" class="btn ">Ajouter au panier</a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="services" id="services">
+    
+            <h1 class="heading"> Nos <span>meilleure ventes</span> </h1>
+
+            {# <h2>Découvrez les articles les plus vendus.</h2> #}
+
+            <div class="row">
+                <div class="box-container">
+                    {% for service in services %}
+                        
+                        {% include 'services/single_service.html.twig' %}
+                        
+                    {% endfor %}
+                </div>
+            </div>
+        <section>
+    </main>
+
+{% endblock %}

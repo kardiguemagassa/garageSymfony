@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter - Le garage V.parrot!{% endblock %}
+
+{% block content %}
+
+    <h1 class="heading mb-5 mt-5"><span>contact</span> nous</h1>
+    <h3 class="text-center mb-5">
+        N'hésitez pas à prendre contact avec notre équipe, 
+        nous vous repondrons dans le meilleurs délais.
+    </h3>
+    
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">{{message}}</div>
+    {% endfor %}
+    
+    <div class="row mb-5 formInputText">
+        <div class="col-md-8 p-10 ">{{form (form)}}</div>
+        <div class="col-md-4 ">
+            <h3>Le garage</h3>
+            <hr>
+           <h5> 
+                1 rue Perigort 31004 Toulouse<br/>
+                Tel : <span>0561718191</span> <br/>
+                Email : <span>garagev.parrot@gmail.com</span>
+            </h5> 
+        </div>
+    </div>
+
+{% endblock %}

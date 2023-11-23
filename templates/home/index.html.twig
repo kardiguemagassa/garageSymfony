@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil {% endblock %}
+{% block carousel %}{% endblock %}
+
+{% block content %}
+
+    <main>
+        {# Services #}
+        <section class="services" id="services">
+
+            <h1 class="heading"> Nos <span>services</span> </h1>
+            
+            <div class="row ">
+                <div class="box-container">
+
+                    {% for service in services %}
+                        {% include 'services/single_service.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            {# <h1 class="heading"> <span>Nos meilleurs </span> ventes </h1>
+            
+            <div class="box-container">
+                {% for car in cars %}
+                    {% include 'cars/single_car.html.twig' %}
+                {% endfor %}
+            </div> #}
+
+        </section>
+
+
+        {# Véhicules #}
+        <section class="featured" id="featured">
+            <h1 class="heading"> <span>Nos meilleurs </span> ventes </h1>
+            <div class="swiper featured-slider">
+                <div class="swiper-wrapper">
+
+                    {% for car in cars %}
+                        {% include 'cars/single_car.html.twig' %}
+                    {% endfor %}
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section class="featured" id="featured">
+            <div class="swiper featured-slider">
+                <div class="swiper-wrapper">
+
+                    {% for car in cars %}
+                        {% include 'cars/single_car.html.twig' %}
+                    {% endfor %}
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <hr class="featurette-divider">	
+
+    </main>
+
+{% endblock %}

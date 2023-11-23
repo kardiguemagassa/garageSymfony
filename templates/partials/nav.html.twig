@@ -1,0 +1,43 @@
+{# header #}
+<header class="header">
+
+    <section class="flex">
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+        <a href="{{path('home')}}" class="logo"> 
+			{# <span>Garage V.</span>parrot  #}
+			<span><img src="{{ asset('assets/img/Logo.webp') }}" style="width:100px" alt="logo garage vincent parrot"></span>      
+		</a>
+
+        <nav class="navbar">
+            <a href="{{path('home')}}">accueil</a>
+			<a href="{{path('services')}}">services</a>
+            <a href="{{path('cars')}}">véhicles</a>
+            <a href="{{path('testimonials')}}">avis client</a>
+            <a href="{{path('contact')}}">contact</a>
+        </nav>
+
+        <div id="login-btn">
+			<i class="far fa-user"></i>
+			{% if app.user %}
+					<a href="{{path('account')}}" class="btn">Mon compte
+						<small>({{app.user.firstname}})</small>
+					</a>
+					|
+					<a href="{{path('app_logout')}}" class="btn">Déconnexion</a>
+				{% else %}
+					<a href="{{path('app_login')}}" class="btn">Connexion</a>
+					|
+					<a href="{{path('register')}}" class="btn">Inscription</a>
+				{% endif %}
+            <i class="far fa-user"></i>
+        </div>
+
+		<a href="{{path ('cart') }}">
+			<img src="{{asset ('assets/img/shopping.png') }}" class="cart-icon" alt="Mon panier">
+		</a>
+
+    </section>
+
+</header> 

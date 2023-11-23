@@ -1,5 +1,11 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        footerData: '@App\Twig\FooterDataExtension'
+        carsData: '@App\Twig\CarsDataExtension'
+        testimonialsData: '@App\Twig\TestimonialsDataExtension'
+        
+    form_themes: ['bootstrap_5_layout.html.twig']
 
 when@test:
     twig:

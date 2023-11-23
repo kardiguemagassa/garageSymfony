@@ -1,0 +1,11 @@
+<div class="box ">
+    <a href="{{path('service', {'slug' : service.slug}) }}">
+        <img src="/uploads/services/{{service.illustration }}" 
+        style="width:120px" alt="{{service.title }}" class="img-fluid">
+    </a>
+    <h3>Référence : {{service.title}}</h3>
+    <p>{{service.description}}</p>
+    <p>Prix : {{(service.price)|number_format(2,',','.')}} €</p>
+    {# <a href="{{path('service', {'slug' : service.slug}) }}"  class="btn ">Prendre rendez-vous</a> #}
+    <a href="{{path('contact') }}"  class="btn ">Prendre rendez-vous</a>
+</div> 

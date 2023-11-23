@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+
+    <h1 class="heading mb-5 mt-5"><span>Je</span> m'inscris</h1>
+
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info formInputText">{{message}}</div>
+    {% endfor %}
+
+    <div class="formInputText">{{form (form) }}</div>
+    
+{% endblock %}

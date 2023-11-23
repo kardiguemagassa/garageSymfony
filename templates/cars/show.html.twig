@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{car.brand}} {% endblock %}
+
+{% block content %}
+
+    <section class="services" id="services">
+
+        <h1 class="heading"> <span>Nos véhicules</span> d'occasions </h1>
+
+        <div class="row ">
+            <div class="box-container">
+                <div class="box ">
+                    <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid ">
+                </div>
+            
+                <div class="col-md-12 my-auto">
+
+                    <h3>Marque : {{car.brand}}</h3>
+                    <h3>Modèle : {{car.models}}</h3>
+                    <h3>Année : {{car.year}}</h3>
+                    <h3>Energie : {{car.energy}}</h3>
+                    <h3>Kilomètre : {{car.kilometer}} km</h3>
+                    <h3>Prix : {{(car.price)|number_format(2,',','.')}} €</h3>
+                    <hr>
+                    <h4>{{car.description}}</h4>
+
+                    {# a mettre buton contact-nous #}
+                    {# <a href="{{path('add_to_cart', {'id' : service.id })}}" class="btn btn-primary">Nous contacter</a> #}
+
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h1 class="heading"> Nos <span>meilleurs ventes</span> </h1>
+
+        {# <div class="box-container">
+            {% for car in cars %}
+
+                {% include 'cars/single_car.html.twig' %}
+
+            {% endfor %}
+        </div> #}
+    </section>
+
+
+    <section class="featured" id="featured">
+        <div class="swiper featured-slider">
+            <div class="swiper-wrapper">
+
+                {% for car in cars %}
+                    {% include 'cars/single_car.html.twig' %}
+                {% endfor %}
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+{% endblock %}

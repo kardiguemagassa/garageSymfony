@@ -1,0 +1,85 @@
+<main>
+
+    {# icons #}
+    <div class="icons-container">
+
+        <section class="box-container">
+
+            <div class="box">
+                <i class="fas fa-home"></i>
+                <div class="content">
+                    <h3>5+</h3>
+                    <p>sites</p>
+                </div>
+            </div>
+        
+            <div class="box">
+                <i class="fas fa-car"></i>
+                <div class="content">
+                    <h3>200+</h3>
+                    <p>cars sold</p>
+                </div>
+            </div>
+        
+            <div class="box">
+                <i class="fas fa-users"></i>
+                <div class="content">
+                    <h3>320+</h3>
+                    <p>clients heureux</p>
+                </div>
+            </div>
+        
+            <div class="box">
+                <i class="fas fa-car"></i>
+                <div class="content">
+                    <h3>250+</h3>
+                    <p>nouvelles voitures</p>
+                </div>
+            </div>
+        
+        </section>
+
+    </div>
+
+
+    {# les nouveautés #}
+    {% set carsData = carsData() %} 
+    <section class="vehicles" id="vehicles">
+
+        <h1 class="heading"> Les <span>nouveautés</span> </h1>
+
+        <div class="swiper vehicles-slider">
+
+            <div class="swiper-wrapper">
+
+                {# {% for car in cars %} #}
+                {% for car in carsData['cars'] %}
+        
+                <div class="swiper-slide box">
+                    <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid no-gutters" >
+                    <div class="content">
+                        <h3> {{car.brand.libelle}}</h3>
+                        <h3> {{car.models.libelle}}</h3>
+                        <div class="price"> <span>Prix : </span> {{(car.price)|number_format(2,',','.')}} € </div>
+                        <p>
+                            
+                            <span class="fas fa-circle"></span> Année : {{car.year}}
+                            <span class="fas fa-circle"></span> boite auto
+                            <span class="fas fa-circle"></span> Energie : {{car.energy}}
+                            <span class="fas fa-circle"></span> Kilomètre : {{car.kilometer}} km
+                        </p>
+                        <a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+                    </div>
+                </div>
+
+                
+            {% endfor %}
+            </div>
+
+            {# <div class="swiper-pagination"></div> #}
+
+        </div>
+
+    </section>
+    
+</main>

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier - Garage {% endblock %}
+
+{% block content %}
+
+    <h1 class="heading"> Mon <span>Panier</span> </h1>
+    <h3 class="mt-5 mb-5">Retrouvez l'ensemble des produits que vous ajouté à votre panier.<h/3>
+
+    {# si plus de produit dans le panier on le vide #}
+    {% if cart|length > 0 %}
+        <table class="table md-3">
+            <thead>
+                <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% set total = null %}
+                {% for service in cart %} 
+                    {# {{ dump(service) }} #}
+                    
+                        <tr>
+                            <th>
+                                <img src="/uploads/services/{{service.service.illustration }}" alt="{{service.service.title }}" height="75px"></br> 
+                                    {{service.service.title}}
+                            </th>
+                            <td>
+                                <a href="{{path('decrease_to_cart', {'id' : service.service.id}) }}">
+                                    <img src="{{asset('/assets/img/moins.png')}}" height="12px" alt="Retir un quantité à mon produit">
+                                </a>
+                                x {{ service.quantity }}
+                                <a href="{{path('add_to_cart', {'id' : service.service.id}) }}">
+                                    <img src="{{asset('/assets/img/plus.png')}}" height="12px" alt="Ajouter un produit">
+                                </a>
+                            </td>
+                            <td>{{ (service.service.price)|number_format(2, ',','.') }} €</td>
+                            <td>{{ ((service.service.price * service.quantity))|number_format(2, ',','.') }} €</td>
+                            <td>
+                                <a href="{{path('delete_to_cart', {'id' : service.service.id}) }}">
+                                    <img src="{{asset('/assets/img/delete.png')}}" height="25px" alt="Supprimer mon produit">
+                                </a>
+                            </td>
+                        </tr>
+                        {% set total = total + ((service.service.price * service.quantity)) %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-right =b-5">
+                <b>Nombre de produit :</b> {{cart|length}}</br>
+                <b>Total de mon panier :</b> {{ (total)|number_format(2, ',','.') }} €
+                <a href"" class="btn btn-block mt-3 mb-5">Valider mon panier</a>
+            </div>
+        </div>
+    {% else %}
+      <hr>
+      <p><b>Votre panier est vide.</b></p> 
+    {% endif %}
+
+
+{% endblock %}

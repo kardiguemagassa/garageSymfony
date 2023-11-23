@@ -1,16 +1,49 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Atelier de mecanique et garage automobile toutes marques, vente de vehicules d'occasion."/>
+    <meta name="”robots”" content="”index," follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1″/>
+    <meta name="author" content="Kardigué Magassa"/>
+	{# <meta name="generator" content="Jekyll v4.1.1"> meail= garagvparrot@gmail.com mdp = Parrot1984#}
 
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <!-- Bootstrap core CSS -->
+    <link href="{{asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+	<link href="{{asset('assets/css/style.css') }}" rel="stylesheet">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+	<title>{% block title %}Garage Vincent Parrot-{% endblock title %}</title>
+
+</head>
+<body>
+
+	{# HEADER #}
+	{% include "partials/nav.html.twig" %}
+
+
+	{# main #}
+	{% include "partials/customHeader.html.twig" %}
+
+	<div class="container "> {% block content %}{% endblock %}</div>
+
+	{% include "partials/customTestimonial.html.twig" %}
+
+
+	{# <!-- FOOTER --> #}
+	{% include "partials/footer.html.twig" %}
+
+
+	{% block javascript %}{% endblock %}
+
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<script src="{{ asset('assets/js/script.js') }}"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+</body>
 </html>

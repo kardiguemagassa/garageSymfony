@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter au garage{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1 class="heading "><span>Merci de vous</span> connecter </h1>
+
+        <label for="inputEmail" class="formInputText">Votre email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control formInputText mt-2 mb-3" placeholder="Votre adresse email" autocomplete="email" required autofocus>
+        <label for="inputPassword" class="formInputText">Votre mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="form-control formInputText mt-2 mb-3 "  placeholder="Votre mot de passe" autocomplete="current-password" required>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+
+        <button class="btn btn-block mb-5" type="submit">Se connecter</button>
+    </form>
+
+{% endblock %}

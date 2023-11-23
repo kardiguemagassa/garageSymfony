@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte - garage{% endblock %}
+
+{% block content %}
+
+    {% if is_granted ('ROLE_ADMIN')%}
+        <small> <a href="/admin">Vous êtes un administrateur, accéder au backoffice </a></small><br>
+    {% endif %}
+    
+    {# a mettre variable app#}
+    
+    <h1 class="heading "><span>{{app.user.firstname}} </span> votre espace admin</h1>
+
+    <hr>
+   
+    <div class="row">
+        <div class="col-md-4">
+            <div class="account-item text-center">
+            <img src="{{asset('assets/img/bloquer.png')}}" style="width:40px;"  alt="Modifier mon mot de passe"><br>
+                <a href="{{path('account_password')}}" class="btn">Modifier mon mot de passe</a><br>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="account-item text-center">
+                <img src="{{asset('assets/img/maison.png')}}" style="width:40px;" alt="Gérer mes addresses"><br>
+                 <a href="{{path('account_address')}}" class="btn">Gérer mes addresses</a><br>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="account-item text-center">
+            <img src="{{asset('assets/img/camion.png')}}" style="width:40px;"  alt="Mes commandes"><br>
+                 <a href="" class="btn">Mes commandes</a><br>
+            </div>
+        </div>
+        
+    </div>
+    <hr>
+    {# <h1>Mon compte</h1>
+    <hr>
+    <a href="{{path('account_password')}}">Modifier mon mot de passe</a><br>
+     <a href="{{path('account_address')}}">Gérer mes addresses</a><br>
+    {{ (app.user.firstname)}} #}
+{% endblock %}

@@ -1,0 +1,55 @@
+{% set footerData = footerData() %} 
+
+<footer class="footer" id="footer">
+
+    <section class="box-container">
+
+        <div class="box">
+            <h3>par tous en france</h3>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Paris </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Marseille </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Lyon </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Toulouse </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Lille </a>
+        </div>
+
+        <div class="box">
+            <h3>Accès rapide</h3>
+            <a href="{{path('home')}}"> <i class="fas fa-arrow-right"></i> accueil </a>
+            <a href="{{path('cars')}}"> <i class="fas fa-arrow-right"></i> véhicles </a>
+            <a href="{{path('services')}}"> <i class="fas fa-arrow-right"></i> services </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> featured </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> reviews </a>
+            <a href="{{path('contact')}}"> <i class="fas fa-arrow-right"></i> contact </a>
+        </div>
+
+        <div class="box">
+            <h3>Informations utiles</h3>
+            <a href="#"> <i class="fas fa-phone"></i> 0561718191 </a>
+            <a href="{{path('contact')}}"> <i class="fas fa-envelope"></i> garage.vparrot@gmail.com </a>
+			<a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+			<a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+			<a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+			<a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> 1 Rue Perigord - 31004 Toulouse </a>
+        </div>
+
+        <div class="box">
+
+            <h3>Horaires d'ouvertures</h3>
+        
+            {% for item in footerData['schedules'] %}
+                
+                <a href="#"><i class="fas fa-arrow-right"></i> 
+                    {{item.openedDays}} : {{item.hoursPM}} : {{item.hoursAM}}
+                </a>
+
+            {% endfor %} 
+
+        </div>
+        
+    </section>
+
+    <div class="credit"> Créer par <span>Mr. Magassa Kardigué</span> | Tous droits réservés </div>
+
+</footer>

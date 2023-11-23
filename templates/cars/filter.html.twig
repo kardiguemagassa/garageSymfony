@@ -1,0 +1,71 @@
+{# formulaire search ajax soit l'un ou l'autre les search ne function pas en même temps, la diference l'un à un id et l'autre non #}
+
+{{ form_start (formSearch, {'attr': {'id':'filtresForm'}}) }} 
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="col-md-3 my-2">
+            {{ form_row (formSearch.minPrice ) }}
+            {{ form_row (formSearch.maxPrice ) }}
+
+        </div>
+        <div class="col-md-3 my-2">
+            {{ form_row (formSearch.minKilometer) }}
+            {{ form_row (formSearch.maxKilometer) }}
+
+        </div>
+        <div class="col-md-3 my-2">
+            {{ form_row (formSearch.minYear) }}
+            {{ form_row (formSearch.maxYear) }}
+        </div>
+        <div class="col-md-3 my-2">
+            {{ form_row (formSearch.brand) }}
+            {{ form_row (formSearch.energy) }}
+        </div> 
+
+        <div class="d-flex justify-content-end">
+            <div class="m-4 ">
+                <button type="submit" class="btn ">Filtrer</button>
+                <button type="button" class="btn border " onclick="resetFilters()">Réinitialiser</button>
+            </div>
+        </div>
+       
+
+    </div>
+    
+
+{{ form_end (formSearch) }}
+
+{# ============================================================================> #}
+
+{# formulaire search symfony soit l'un ou l'autre les search ne function pas en même temps, la diference l'un à un id et l'autre non #}
+
+{# {{ form_start (formSearch) }}
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="col-md-3 my-2">
+            {{ form_row (formSearch.minPrice ) }}
+            {{ form_row (formSearch.maxPrice ) }}
+        </div>
+        <div class="col-md-3 my-2">
+            {{ form_row (formSearch.minKilometer) }}
+            {{ form_row (formSearch.maxKilometer) }}
+        </div>
+        <div class="col-md-3 my-2">
+            {{ form_row (formSearch.minYear) }}
+            {{ form_row (formSearch.maxYear) }}
+        </div>
+        <div class="col-md-3 my-2">
+            {{ form_row (formSearch.brand) }}
+            {{ form_row (formSearch.energy) }}
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <div class="m-4 ">
+            <button type="submit" class="btn btn-success">Filtrer</button>
+            <button type="button" class="btn btn-secondary border border-secondary" onclick="resetFilters()">Réinitialiser</button>
+        </div>
+    </div>
+
+{{ form_end (formSearch) }} #}
