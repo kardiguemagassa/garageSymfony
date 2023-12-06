@@ -20,7 +20,7 @@ class TestimonialsController extends AbstractController
     }
 
     // Avis valide
-    #[Route('/avis', name: 'testimonials')]
+    #[Route('/compte/avis', name: 'testimonials')]
     public function index(TestimonialsRepository $estimonialsRepository): Response
     {
         $testimonial = $estimonialsRepository->findByValidated(1);
@@ -33,7 +33,7 @@ class TestimonialsController extends AbstractController
 
 
     //sauvegarde des avis
-     #[Route('/avis/save', name: 'testimonials_save', methods:['POST'])]
+     #[Route('/avis/save', name: 'save_testimonial', methods:['POST'])]
     public function saveTestimonial(Request $request): Response
     {
         $note = $request->request->get('note');

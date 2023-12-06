@@ -40,9 +40,9 @@ class DashboardController extends AbstractDashboardController
 
     public function configureDashboard(): Dashboard{
         return Dashboard::new()
-            ->setTitle('Administration');
-            //->setFaviconPath('/assets/img/Logo.webp');
-            //->renderContentMaximized();
+            ->setTitle('Administration')
+            ->setFaviconPath('assets/img/Logo.webp')
+            ->renderContentMaximized();
     }
 
 
@@ -55,13 +55,13 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Gérer les marques', 'fa-solid fa-image', Brand::class);
         yield MenuItem::linkToCrud('Gérer les avis clients', 'fa-solid fa-star', Testimonials::class);
 
-        //if ($this->isGranted('ROLE_ADMIN')) {
-        yield MenuItem::section('Section Admin');
-        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
-        yield MenuItem::linkToCrud('Gérer les horaires', 'fas fa-clock', Schedules::class);
-        yield MenuItem::linkToCrud('Gérer les garages', 'fas fa-city', Garages::class);
-        yield MenuItem::linkToCrud('Gérer les services', 'fa-solid fa-handshake', Services::class);
-        yield MenuItem::linkToCrud('Headers', 'fas fa-desktop', Header::class);
-        //}
+        if ($this->isGranted('ROLE_ADMIN')) {
+            yield MenuItem::section('Section Admin');
+            yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class);
+            yield MenuItem::linkToCrud('Gérer les horaires', 'fas fa-clock', Schedules::class);
+            yield MenuItem::linkToCrud('Gérer les garages', 'fas fa-city', Garages::class);
+            yield MenuItem::linkToCrud('Gérer les services', 'fa-solid fa-handshake', Services::class);
+            yield MenuItem::linkToCrud('Headers', 'fas fa-desktop', Header::class);
+        }
     }
 }

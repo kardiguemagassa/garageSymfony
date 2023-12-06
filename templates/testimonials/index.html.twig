@@ -2,10 +2,6 @@
 
  {% block title %}Avis des clients{% endblock %}
 
- {% block javascript %}
-     <script src="assets/js/stars.js"></script> 
-{% endblock javascript %} 
-
  {% block content %}
 
     <main>
@@ -15,7 +11,7 @@
 
             <h1 class="heading"> Donnez <span>votre avis</span> </h1>
 
-            <form method="POST" action="{{ path('testimonials_save') }}">
+            <form method="POST" action="{{ path('save_testimonial') }}">
 
                 <div class="form-group">
                     <div class="rating d-flex justify-content-center my-5 d-flex align-content-center">
@@ -39,15 +35,16 @@
                             {# form-control border border-warning my-1 #}
                             <textarea id="message" name="message" class="form-control border border-warning my-1"rows="10"></textarea>
 
+                            {# recuperartion de footer #}
                             {% set footerData = footerData() %}
 
                                 <label for="garage_id" class="mt-2">Nom du garage :</label>
-                                {# form-select border border-warning my-1 #}
+                                
                                 <select name="garage_id" class="">
 
                                     {% for garage in footerData.garages %}
                                         <option value="{{ garage.id }}">{{ garage.name }}</option>
-                                    {% endfor %}
+                                    {% endfor %} 
 
                                 </select>
                         </div>
@@ -57,7 +54,7 @@
                         <button type="submit" class="btn my-5">Donner son avis</button>
                     </div>
             </form>
-            {# <button id="topBtn" onclick="onTop()" class="btn"><i class="bi bi-arrow-up-circle-fill"></i></button> #}
+
         </section>
 
         {# BTN on top #}
@@ -65,3 +62,7 @@
     </main>
 
 {% endblock %} 
+
+{% block javascript %}
+    <script src="{{ asset('assets/js/stars.js') }}"></script>
+{% endblock javascript %}

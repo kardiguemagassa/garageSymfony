@@ -1,5 +1,6 @@
 window.onload = () => {
     const stars = document.querySelectorAll(".bi-star");
+    console.log('coucou')
 
     const note = document.querySelector("#note");
 

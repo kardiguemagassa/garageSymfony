@@ -1,0 +1,54 @@
+{# {% for ad in ads %}
+<div class="card" data-prix="{{ ad.price }}" data-kilometres="{{ ad.cars.kilometers }}" data-annee="{{ ad.cars.year }}"
+    data-marque="{{ ad.cars.brand }}" data-carburant="{{ ad.cars.energy }}">
+    <div class="card-body">
+        <h3 class="card-title text-center my-5">{{ ad.title }}</h3>
+
+        <div class="d-flex justify-content-center">
+            <div id="carousel{{ ad.id }}" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for index, image in ad.getimages()|slice(0, 3) %}
+                    <div class="carousel-item {% if index == 0 %}active{% endif %}">
+                        <img src="{{ image.path }}" class="img-fluid border border-warning" alt="Image {{ index }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ ad.id }}"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ ad.id }}"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center flex-column align-content-center flex-wrap">
+            <h6 class="text-center my-3">Date de mise en ligne: {{ ad.createdAt|date("d/m/Y") }}</h6>
+            <h5 class="my-5">Description:</h5>
+            <ul>
+                <li>
+                    <p><span class="text-warning fw-bold">Marque: </span> {{ ad.cars.brand }}</p>
+                </li>
+                <li>
+                    <p><span class="text-warning fw-bold">Modèle:</span> {{ ad.cars.model }}</p>
+                </li>
+                <li>
+                    <p><span class="text-warning fw-bold">Énergie:</span> {{ ad.cars.energy }}</p>
+                </li>
+                <li>
+                    <p><span class="text-warning fw-bold">Année:</span> {{ ad.cars.year }}</p>
+                </li>
+                <li>
+                    <p><span class="text-warning fw-bold">Kilomètres</span>: {{ ad.cars.kilometers }} km</p>
+                </li>
+            </ul>
+            <h3 class="text-warning fs-1 text-center my-5">{{ ad.price }} €</h3>
+            <a class="btn" href="/annonces/{{ ad.id }}">Détails</a>
+        </div>
+    </div>
+</div>
+{% endfor %} #}

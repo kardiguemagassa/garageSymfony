@@ -4,13 +4,14 @@
 
 {% block content %}
 
-    {% if is_granted ('ROLE_ADMIN')%}
+    {# or is_granted ('ROLE_ADMIN') #}
+    {# {% if is_granted ('ROLE_ADMIN')%}
         <small> <a href="/admin">Vous êtes un administrateur, accéder au backoffice </a></small><br>
-    {% endif %}
+    {% endif %} #}
     
     {# a mettre variable app#}
     
-    <h1 class="heading "><span>{{app.user.firstname}} </span> votre espace admin</h1>
+    {# <h1 class="heading "><span>{{app.user.firstname}} </span> votre espace admin</h1> #}
 
     <hr>
    

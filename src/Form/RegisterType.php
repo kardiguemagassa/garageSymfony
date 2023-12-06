@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -57,6 +58,11 @@ class RegisterType extends AbstractType
             // mot de passe et sa confirmation password. il ya deux façons de faire
             ->add('password', RepeatedType::class,[
                 'type' => PasswordType::class,
+                'constraints' => [
+                    new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
+                    "Il faut un mot de passe de 8 caractères avec un majuscule une minuscule,un chiffre et caractèes spécial")
+                ],
+                
                 'invalid_message' => "Le mot de passe et la confirmation doivent être identique.",
                 'label' =>'Votre mot de passe',
                 'required' => true,

@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+//use App\Classe\Search;
 use App\Entity\SearchCars;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -78,7 +79,7 @@ class SearchCarsType extends AbstractType
                     'ELECTRIQUE' => 'ELECTRIQUE',
                 ]
             ]);
-        
+            
         ;
     }
 

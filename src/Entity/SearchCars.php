@@ -6,14 +6,23 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class SearchCars {
 
-    private $minPrice;
-    private $maxPrice;
-    private $minKilometer;
-    private $maxKilometer;
-    private $minYear;
-    private $maxYear;
-    private $brand;
-    private $energy;
+    // private $minPrice;
+    // private $maxPrice;
+    // private $minKilometer;
+    // private $maxKilometer;
+    // private $minYear;
+    // private $maxYear;
+    // private $brand;
+    // private $energy;
+
+    private ?float $minPrice = null;
+    private ?float $maxPrice = null;
+    private ?string $minKilometer = null;
+    private ?string $maxKilometer = null;
+    private ?int $minYear = null;
+    private ?int $maxYear = null;
+    private ?string $brand = null;
+    private ?string $energy = null;
 
 
     public function getMinPrice()

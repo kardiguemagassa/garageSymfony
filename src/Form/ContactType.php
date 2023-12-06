@@ -40,7 +40,7 @@ class ContactType extends AbstractType
                     'style' => 'height: 50px',
                 ]
             ])
-            ->add('content', TextareaType::class,[
+            ->add('message', TextareaType::class,[
                 'label' => 'Votre message',
                 'attr' =>[
                     'placeholder' => 'En quoi pouvons-nous vous aider ?',

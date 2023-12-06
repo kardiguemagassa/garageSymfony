@@ -3,10 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Cars;
-use App\Classe\Search;
+
 use Doctrine\ORM\Query;
 use App\Entity\SearchCars;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
@@ -25,12 +26,16 @@ class CarsRepository extends ServiceEntityRepository
     }
 
 
-    /**Requêtte qui permet de récuperer les produits en fonction de la recherche de l'utilisateur 
-     *return Product[] en gros filtré quoi
+    /**Requêtte qui permet de récuperer les voitures en fonction de la recherche de l'utilisateur 
+     *return Cars[]
      filtrer par symfony
     */
     public function findAllWithPagination(SearchCars $searchCars): Query{
-        $req = $this->createQueryBuilder('c');
+        //$req = $this->createQueryBuilder('c');
+         $req = $this
+            ->createQueryBuilder('c')
+            ->select('b','c')
+            ->join('c.brand','b');
                
         if($searchCars->getMinPrice()){
             $req = $req->andWhere('c.price >= :min')
@@ -73,54 +78,53 @@ class CarsRepository extends ServiceEntityRepository
 
 
     // filtrer par fetch
-    public function filterAjax(Search $search){
+    public function filterAjax(SearchCars $search){
         $query = $this
             ->createQueryBuilder('c')
             ->select('b','c')
             ->join('c.brand','b');
 
-        if (!empty($search->minPrice)) {
-            $query->andWhere('c.price >= :priceMin')
-                ->setParameter('priceMin', $search->minPrice);
+        if (!empty($search->getMinPrice())) {
+            $query->andWhere('c.price >= :minPrice')
+                ->setParameter('minPrice', $search->getMinPrice());
         }
 
-        if (!empty($search->maxPrice)) {
-            $query->andWhere('c.price <= :priceMax')
-                ->setParameter('priceMax', $search->maxPrice);
+        if (!empty($search->getMaxPrice())) {
+            $query->andWhere('c.price <= :maxPrice')
+                ->setParameter('maxPrice', $search->getMaxPrice());
         }
 
-        if (!empty($search->minKilometers)) {
-            $query->andWhere('c.kilometers >= :kilometersMin')
-                ->setParameter('kilometersMin', $search->minKilometers);
+        if (!empty($search->getMinKilometer())) {
+            $query->andWhere('c.kilometers >= :minKilometers')
+                ->setParameter('minKilometers', $search->getMinKilometer());
         }
 
-        if (!empty($search->maxKilometers)) {
-            $query->andWhere('c.kilometers <= :kilometersMax')
-                ->setParameter('kilometersMax', $search->maxKilometers);
+        if (!empty($search->getMaxKilometer())) {
+            $query->andWhere('c.kilometers <= :maxKilometers')
+                ->setParameter('maxKilometers', $search->getMaxKilometer());
         }
 
-        if (!empty($search->minYear)) {
-            $query->andWhere('c.year >= :yearMin')
-                ->setParameter('yearMin', $search->minYear);
+        if (!empty($search->getMinYear())) {
+            $query->andWhere('c.year >= :minYear')
+                ->setParameter('minYear', $search->getMinYear());
         }
 
-        if (!empty($search->maxYear)) {
-            $query->andWhere('c.year <= :yearMax')
-                ->setParameter('yearMax', $search->maxYear);
+        if (!empty($search->getMaxYear())) {
+            $query->andWhere('c.year <= :maxYear')
+                ->setParameter('maxYear', $search->getMaxYear());
         }
 
-        if (!empty($search->brand)) {
+        if (!empty($search->getBrand())) {
             $query->andWhere('c.brand = :brand')
-                ->setParameter('brand', $search->brand);
+                ->setParameter('brand', $search->getBrand());
         }
 
-        if (!empty($search->energy)) {
+        if (!empty($search->getEnergy())) {
             $query->andWhere('c.energy = :energy')
-                ->setParameter('energy', $search->energy);
+                ->setParameter('energy', $search->getEnergy());
         }
 
         return $query->getQuery()->getResult();
-    } 
-
+    }
 
 }

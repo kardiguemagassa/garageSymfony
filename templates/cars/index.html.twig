@@ -8,10 +8,9 @@
    {# FILTER #}
     <section class="row my-5 border-bottom border-warning">
         <h3 class="text-center text-warning my-5">Filtres</h3>
-
-        {% include "cars/filter.html.twig" with {formSearch: formSearch} only %}
-
+          {% include "cars/filter.html.twig" with {formSearch: formSearch} only %}
     </section>
+    
 
 {# ===============================================================================> #}
 
@@ -32,8 +31,8 @@
 
     {# ==============================================================================> #}
 
-
     <section class="featured" id="featured">
+    
 
         <div id="carsContainer">
             <h1 class="heading"> <span>Nos véhicules</span> d'occasion </h1>
@@ -42,7 +41,28 @@
                 <div class="swiper-wrapper">
 
                     {% for car in cars %}
-                        {% include 'cars/single_car.html.twig' %}
+                        {# {% include 'cars/single_car.html.twig' %} #}
+
+                        <div class="swiper-slide box">
+                            <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid no-gutters" >
+                            <div class="content">
+                                <h3> {{car.brand.libelle}} : {{car.models.libelle}}</h3>
+                                <h4>Modèle : {{car.models.libelle}}</h4>
+                                <h4>Année : {{car.year}}</h4>
+                                <h4>Energie : {{car.energy}}</h4>
+                                <h4>Kilomètre : {{car.kilometer}} km</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="price">Prix : {{(car.price)|number_format(2,',','.')}} € </div>
+                                <a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+                            </div>
+                        </div>
+
                     {% endfor %}
                 </div>
 
@@ -53,7 +73,28 @@
                 <div class="swiper-wrapper">
 
                     {% for car in cars %}
-                        {% include 'cars/single_car.html.twig' %}
+                        {# {% include 'cars/single_car.html.twig' %} #}
+
+                        <div class="swiper-slide box">
+                            <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid no-gutters" >
+                            <div class="content">
+                                <h3> {{car.brand.libelle}} : {{car.models.libelle}}</h3>
+                                <h4>Modèle : {{car.models.libelle}}</h4>
+                                <h4>Année : {{car.year}}</h4>
+                                <h4>Energie : {{car.energy}}</h4>
+                                <h4>Kilomètre : {{car.kilometer}} km</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="price">Prix : {{(car.price)|number_format(2,',','.')}} € </div>
+                                <a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+                            </div>
+                        </div>
+
                     {% endfor %}
         
                 </div>
@@ -61,7 +102,7 @@
                 <div class="swiper-pagination"></div>
             </div>
 
-            <p class="pagination ">{{ knp_pagination_render(cars) }}</p>
+            {# <p class="pagination ">{{ knp_pagination_render(cars) }}</p> #}
         </div>
     </section>
 
@@ -71,5 +112,3 @@
 {% block javascript %}
 	<script src="{{ asset('assets/js/filter.js') }}"></script>
 {% endblock javascript %} 
-
-

@@ -15,12 +15,13 @@
 
         <div class="box">
             <h3>Accès rapide</h3>
-            <a href="{{path('home')}}"> <i class="fas fa-arrow-right"></i> accueil </a>
-            <a href="{{path('cars')}}"> <i class="fas fa-arrow-right"></i> véhicles </a>
-            <a href="{{path('services')}}"> <i class="fas fa-arrow-right"></i> services </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> featured </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> reviews </a>
-            <a href="{{path('contact')}}"> <i class="fas fa-arrow-right"></i> contact </a>
+            {# {%if is_granted ('ROLE_USER') or is_granted ('ROLE_ADMIN') %}  #}
+                <a href="{{path('home')}}"> <i class="fas fa-arrow-right"></i> accueil </a>
+                <a href="{{path('cars')}}"> <i class="fas fa-arrow-right"></i> véhicles </a>
+                <a href="{{path('services')}}"> <i class="fas fa-arrow-right"></i> services </a>
+                <a href="{{path('contact')}}"> <i class="fas fa-arrow-right"></i> contact </a>
+                <a href="{{path('testimonials')}}"> <i class="fas fa-arrow-right"></i> avis client </a>
+            {# {% endif %} #}
         </div>
 
         <div class="box">

@@ -6,12 +6,13 @@ use App\Entity\Cars;
 use App\Classe\Search;
 //use App\Form\SearchType;
 use App\Entity\SearchCars;
+use App\Entity\SearchData;
 use App\Form\SearchCarsType;
 use App\Repository\CarsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Test\FormInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,10 +27,9 @@ class CarsController extends AbstractController
     }
 
 
-    #[Route('/nos-cars', name: 'cars')]
+    #[Route('/compte/nos-cars', name: 'cars')]
     public function index(CarsRepository $repo, Request $request, PaginatorInterface $paginatorInterface,): Response
     {
-
         $searchCars = new SearchCars();
         $formSearch = $this->createForm(SearchCarsType::class, $searchCars);
         $formSearch->handleRequest($request);
@@ -38,6 +38,19 @@ class CarsController extends AbstractController
             $repo->findAllWithPagination($searchCars),
             $request->query->getInt('page', 1), 6
         );
+
+        // //==============================================
+        // // verifier si j'ai la requete ajax
+        // // return $this->json([
+        // //      'html' => $html
+        // //  ]);
+        // if($request->get('ajax')){
+        //     //return new JsonResponse([
+        //         return $this->json([
+        //         'content' =>$this->renderView('cars/single_car.html.twig', compact('cars'))
+        //     ]);
+        // }
+        // //==============================================
 
         return $this->render('cars/index.html.twig', [
             'cars' => $cars,
@@ -63,81 +76,46 @@ class CarsController extends AbstractController
     }
 
 
-     // filter les cars
+    //filter les cars
      #[Route('/cars/filters', name: 'cars_filters')]
-     public function filteredAnnonces(CarsRepository $carRepos ,Request $request): Response
+     public function filteredAnnonces(CarsRepository $carsRepository ,Request $request): Response
     {
-        // $form = $this->createSearchForm($request);
-        // $car = $carRepos->findAllWithPagination($form->getData());
-        // $html = $this->renderView('cars/filter.html.twig', [
-        //      'cars' => $cars,
-        //      'formSearch' => $formSearch->createView()
-        //  ]);
- 
-        // return $this->json([
-        //      'html' => $html
-        //  ]);
-
         
-        $searchCars = new SearchCars();
-        $formSearch = $this->createForm(SearchCarsType::class, $searchCars);
-        $formSearch->handleRequest($request);
+        //$searchCars = new SearchCars();
+        //$formSearch = $this->createForm(SearchCarsType::class, $searchCars);
+        //$formSearch->handleRequest($request);
 
-        $cars = $this->entityManager->getRepository(Cars::class, $formSearch)->findAllWithPagination($searchCars);
+        //$cars = $this->entityManager->getRepository(Cars::class, $formSearch)->filterAjax($searchCars);
+        //$cars = $this->entityManager->getRepository(Cars::class, $formSearch)->findAllWithPagination($searchCars);
+        //$cars = $carsRepository->filterAjax($formSearch);
+        //dd($cars);
+
+        $formSearch = $this->createSearchForm($request);
+        $cars = $carsRepository->filterAjax($formSearch->getData());
+        //dd($cars);
         
         // data json
-        $html = $this->renderView('cars/filter.html.twig', [
-             'cars' => $cars,
-             'formSearch' => $formSearch->createView()
+        $html = $this->renderView('cars/single_car.html.twig', [
+            'cars' => $cars,
+            'formSearch' => $formSearch->createView()
          ]);
- 
+
+        //dd($html);
+        
+
         return $this->json([
-             'html' => $html
+             "html" => $html
          ]);
     }
 
 
+      private function createSearchForm(Request $request): FormInterface
+    {
+        $searchCars = new SearchCars();
+        $formSearch = $this->createForm(SearchCarsType::class, $searchCars);
+        $formSearch->handleRequest($request);
+        return $formSearch;
+    }
 
-    // //exple json
-    // use Symfony\Component\HttpFoundation\JsonResponse;
-    // // ...
-    // public function indexeee(): JsonResponse
-    // {
-    //     return $this->json(['email' => 'daniel.martin@free.fr’']);
-    // }
-
-
-
-
-    // #[Route('/get_cars', name: 'get_cars')]
-    // public function getAllCars(CarsRepository $carsRepository, Request $request): JsonResponse
-    // {
-    //     $jsonData = json_decode($request->getContent(), true);
-
-    //     $marque = $jsonData['marque'];
-    //     $kilometre = $jsonData['kilometre'];
-    //     $annee = $jsonData['annee'];
-    //     $price = $jsonData['price'];
-
-    //     $filteredCars = $carsRepository->findByFilters($marque, $kilometre, $annee, $price * 100); 
-
-    //     $filteredData = [];
-    //     foreach ($filteredCars as $cars) {
-    //         $filteredData[] = [
-    //             'id' => $cars->getId(),
-    //             'marque' => $cars->getMarque(),
-    //             'kilometre' => $cars->getKilometre(),
-    //             'annee' => $cars->getAnnee(),
-    //             'price' => $cars->getPrice(),
-    //             'image'=> $cars->getImage(),
-    //             'url' => $this->generateUrl('app_formulaire_from_card', [
-    //                 'marque' => $cars->getMarque(),
-    //                 'price' => $cars->getPrice(),
-    //             ])
-    //         ];
-    //     }
-
-    //     return new JsonResponse($filteredData);
-    // }
 
 }

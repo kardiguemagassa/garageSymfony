@@ -3,45 +3,43 @@
 
 namespace App\Classe;
 
-use App\Entity\Brand;
-use App\Entity\Models;
+// use App\Entity\Brand;
+// use App\Entity\Models;
 
 
 class Search {
     // créer un formulaire lié à cette classes
 
     // recherche texte de l'utilisateur
-    /**
-     * @var string
-     */
-    public $string = "";
 
-    /**
-     * @var Brand[]
-     */
-    public $brand = [];
+    // /**
+    //  * @var string
+    //  */
+    // public $string = "";
 
-     /**
-     * @var Models[]
-     */
-    public $models= [];
+    // /**
+    //  * @var Brand[]
+    //  */
+    // public $brand = [];
 
+    //  /**
+    //  * @var Models[]
+    //  */
+    // public $models= [];
 
-    public ?float $priceMin = null;
+    public ?float $minPrice = null;
 
-    public ?float $priceMax = null;
+    public ?float $maxPrice = null;
 
-    public  ?string $kilometersMin = null;
+    public  ?string $minKilometer = null;
 
-    public  ?string $kilometersMax = null;
+    public  ?string $maxKilometer = null;
 
-    public  ?int $yearMin = null;
+    public  ?int $minYear = null;
 
-    public  ?int $yearMax = null;
+    public  ?int $maxYear = null;
 
-    //public  ?string $brand = null;
+    public  ?string $brand = null;
 
     public  ?string $energy = null;
-
-   
 }

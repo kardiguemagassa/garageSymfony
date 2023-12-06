@@ -1,31 +1,75 @@
-{# <div class="box "> 
+<section class="featured" id="featured">
 
-    <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid">
+    <div id="carsContainer">
+        <h1 class="heading"> <span>Nos véhicules</span> d'occasion </h1>
 
-		<h3>Marque : {{car.brand.libelle}}</h3>
-		<p>Modèle : {{car.models.libelle}}</p>
-		<p>Année : {{car.year}}</p>
-		<p>Energie : {{car.energy}}</p>
-		<p>Kilomètre : {{car.kilometer}} km</p>
-		<p>Prix : {{(car.price)|number_format(2,',','.')}} €</p>
+        <div class="swiper featured-slider">
+            <div class="swiper-wrapper">
 
-    <a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+                {% for car in cars %}
+                    {# {% include 'cars/single_car.html.twig' %} #}
 
-</div> #}
+                    <div class="swiper-slide box">
+                        <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid no-gutters" >
+                        <div class="content">
+                            <h3> {{car.brand.libelle}} : {{car.models.libelle}}</h3>
+                            <h4>Modèle : {{car.models.libelle}}</h4>
+                            <h4>Année : {{car.year}}</h4>
+                            <h4>Energie : {{car.energy}}</h4>
+                            <h4>Kilomètre : {{car.kilometer}} km</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="price">Prix : {{(car.price)|number_format(2,',','.')}} € </div>
+                                <a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+                        </div>
+                    </div>
 
+                {% endfor %}
+            </div>
 
-<div class="swiper-slide box">
-    <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid no-gutters" >
-    <div class="content">
-        <h3> {{car.brand.libelle}} : {{car.models.libelle}}</h3>
-        <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
+            <div class="swiper-pagination"></div>
+
         </div>
-    	<div class="price">Prix : {{(car.price)|number_format(2,',','.')}} € </div>
-    	<a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+
+        <div class="swiper featured-slider">
+            <div class="swiper-wrapper">
+
+                {% for car in cars %}
+                    {# {% include 'cars/single_car.html.twig' %} #}
+
+                    <div class="swiper-slide box">
+                        <img src="/uploads/cars/{{car.image }}" alt="{{car.brand }}" class="img-fluid no-gutters" >
+                        <div class="content">
+                            <h3> {{car.brand.libelle}} : {{car.models.libelle}}</h3>
+                            <h4>Modèle : {{car.models.libelle}}</h4>
+                            <h4>Année : {{car.year}}</h4>
+                            <h4>Energie : {{car.energy}}</h4>
+                            <h4>Kilomètre : {{car.kilometer}} km</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                                <div class="price">Prix : {{(car.price)|number_format(2,',','.')}} € </div>
+                                <a href="{{path('car', {'id' : car.id}) }}"><input type="submit" value="Plus de détails" class="btn"></a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+        
+            </div>
+        
+                <div class="swiper-pagination"></div>
+        </div>
+
+            {# <p class="pagination ">{{ knp_pagination_render(cars) }}</p> #}
     </div>
-</div>
+</section>
+

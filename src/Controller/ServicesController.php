@@ -20,7 +20,7 @@ class ServicesController extends AbstractController
     }
 
 
-    #[Route('/nos-services', name: 'services')]
+    #[Route('/compte/nos-services', name: 'services')]
     public function index(Request $request): Response
     {
 

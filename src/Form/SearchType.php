@@ -23,78 +23,78 @@ class SearchType extends AbstractType{
         
         // Ne pas supprimer cette class
 
-        // $builder
-        //     ->add('string', TextType::class,[
-        //         'label' => false,
-        //         'required' => false,
-        //         'attr' =>[
-        //             'placeholder' => 'Votre rechreche ... ',
-        //             //pour la taille de search bar
-        //             //'class' =>'form-control-sm'
-        //         ]
-        //         ])
-        //     ->add('brand', EntityType::class,[
-        //         'label' => false,
-        //         'required' => false,
-        //         'class' => Brand::class,
-        //         'multiple' => true,
-        //         'expanded' => true,
-        //     ])
+        $builder
+            // ->add('string', TextType::class,[
+            //     'label' => false,
+            //     'required' => false,
+            //     'attr' =>[
+            //         'placeholder' => 'Votre rechreche ... ',
+            //         //pour la taille de search bar
+            //         //'class' =>'form-control-sm'
+            //     ]
+            //     ])
+            // ->add('brand', EntityType::class,[
+            //     'label' => false,
+            //     'required' => false,
+            //     'class' => Brand::class,
+            //     'multiple' => true,
+            //     'expanded' => true,
+            // ])
 
-        //     ->add('brand', EntityType::class,[
-        //         'label' => false,
-        //         'required' => false,
-        //         'class' => Models::class,
-        //         'multiple' => true,
-        //         'expanded' => true,
-        //     ])
+            // ->add('brand', EntityType::class,[
+            //     'label' => false,
+            //     'required' => false,
+            //     'class' => Models::class,
+            //     'multiple' => true,
+            //     'expanded' => true,
+            // ])
 
-        //     ->add('submit', SubmitType::class,[
-        //         'label' => 'Filtrer',
-        //         'attr' =>[
-        //             'class' => 'btn btn-block btn btn-info'
-        //         ]
-        //     ])
-        //             ;
+            // ->add('submit', SubmitType::class,[
+            //     'label' => 'Filtrer',
+            //     'attr' =>[
+            //         'class' => 'btn btn-block btn btn-info'
+            //     ]
+            // ])
+            //         ;
 
-        // }
+        //}
            
-        //     ->add('priceMin', NumberType::class, [
+        //     ->add('minPrice', NumberType::class, [
         //         'label' => 'Prix Minimum:',
         //         'required' => false,
         //         'attr' => [
         //             'class' => 'form-control'
         //         ]
         //     ])
-        //     ->add('priceMax', NumberType::class, [
+        //     ->add('maxPrice', NumberType::class, [
         //         'label' => 'Prix Maximum:',
         //         'required' => false,
         //         'attr' => [
         //             'class' => 'form-control'
         //         ]
         //     ])
-        //     ->add('kilometersMin', TextType::class, [
+        //     ->add('minKilometer', TextType::class, [
         //         'label' => 'Kilomètres Minimum:',
         //         'required' => false,
         //         'attr' => [
         //             'class' => 'form-control'
         //         ]
         //     ])
-        //     ->add('kilometersMax', TextType::class, [
+        //     ->add('maxKilometer', TextType::class, [
         //         'label' => 'Kilomètres Maximum:',
         //         'required' => false,
         //         'attr' => [
         //             'class' => 'form-control'
         //         ]
         //     ])
-        //     ->add('yearMin', IntegerType::class, [
+        //     ->add('minYear', IntegerType::class, [
         //         'label' => 'Année Minimum:',
         //         'required' => false,
         //         'attr' => [
         //             'class' => 'form-control'
         //         ]
         //     ])
-        //     ->add('yearMax', IntegerType::class, [
+        //     ->add('maxYear', IntegerType::class, [
         //         'label' => 'Année Maximum:',
         //         'required' => false,
         //         'attr' => [
@@ -121,7 +121,8 @@ class SearchType extends AbstractType{
         //             'ELECTRIQUE' => 'ELECTRIQUE',
         //         ]
         //     ]);
-          }
+        ;
+    }
 
 
         public function configureOptions(OptionsResolver $resolver): void
